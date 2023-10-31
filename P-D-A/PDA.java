@@ -20,6 +20,15 @@ public class PDA
     }
     Scanner scanner = new Scanner(System.in);
     int age = 0;
+    int LOWER_BOUND = 14;
+    public void minAge() {
+        float minAge = age;
+        int realMinAge = Math.round((minAge/2)+7);
+    }
+    public void maxAge() {
+        float maxAge = age;
+        int realMaxAge = Math.round(age-7)*2;
+    }
     /**
      * This is the main event loop for our PDA program
      */
@@ -28,7 +37,13 @@ public class PDA
             System.out.println("what is your age?");
             try {
                 age = scanner.nextInt();
-                System.out.println(age);  
+                if (age < LOWER_BOUND) {
+                    System.out.println(age+" is too young!!");
+                } else {
+                    maxAge();
+                    minAge();
+                    System.out.println("Your dating range is from "+realMinAge+" to "+realMaxAge);
+                }
             } catch (InputMismatchException error) {
                 System.out.println("Please enter an integer");
                 scanner.next();
